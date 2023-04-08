@@ -29,10 +29,24 @@ class TargetViewController: UIViewController {
     }(UILabel())
     
     let categoryButton1: UIButton = {
-        $0.setTitle("# 내면적 성장을 위해서\n(책읽기, 명상하기, 일기쓰기 등)", for: .normal)
-        $0.titleLabel?.lineBreakMode = .byWordWrapping
+        let firstLine = "# 내면적 성장을 위해서"
+        let secondLine = "(책읽기, 명상하기, 일기쓰기 등)"
+        let firstLineAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.black,
+            .font: UIFont.pretendardBold(size: 17)]
+        let firstLineAttributedString = NSAttributedString(string: firstLine, attributes: firstLineAttributes)
+        let secondLineAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.black,
+            .font: UIFont.pretendardRegular(size: 15)]
+        let secondLineAttributedString = NSAttributedString(string: secondLine, attributes: secondLineAttributes)
+        let combinedString = NSMutableAttributedString()
+        combinedString.append(firstLineAttributedString)
+        combinedString.append(NSAttributedString(string: "\n"))
+        combinedString.append(secondLineAttributedString)
+        $0.titleLabel?.numberOfLines = 0
         $0.titleLabel?.textAlignment = .center
-        $0.setTitleColor(.black, for: .normal)
+        $0.setAttributedTitle(combinedString, for: .normal)
+        
         $0.layer.cornerRadius = 15
         $0.backgroundColor = UIColor.white
         $0.layer.borderWidth = 1
@@ -41,13 +55,25 @@ class TargetViewController: UIViewController {
         return $0
     }(UIButton())
     
-    
-    
     let categoryButton2: UIButton = {
-        $0.setTitle("# 생산성을 위해서\n(공부, 어학, 비즈니스 스킬 등)", for: .normal)
-        $0.titleLabel?.lineBreakMode = .byWordWrapping
+        let firstLine = "# 생산성을 위해서"
+        let secondLine = "(공부, 어학, 비즈니스 스킬 등)"
+        let firstLineAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.black,
+            .font: UIFont.pretendardBold(size: 17)]
+        let firstLineAttributedString = NSAttributedString(string: firstLine, attributes: firstLineAttributes)
+        let secondLineAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.black,
+            .font: UIFont.pretendardRegular(size: 15)]
+        let secondLineAttributedString = NSAttributedString(string: secondLine, attributes: secondLineAttributes)
+        let combinedString = NSMutableAttributedString()
+        combinedString.append(firstLineAttributedString)
+        combinedString.append(NSAttributedString(string: "\n"))
+        combinedString.append(secondLineAttributedString)
+        $0.titleLabel?.numberOfLines = 0
         $0.titleLabel?.textAlignment = .center
-        $0.setTitleColor(.black, for: .normal)
+        $0.setAttributedTitle(combinedString, for: .normal)
+        
         $0.layer.cornerRadius = 15
         $0.backgroundColor = UIColor.white
         $0.layer.borderWidth = 1
@@ -57,10 +83,27 @@ class TargetViewController: UIViewController {
     }(UIButton())
     
     let categoryButton3: UIButton = {
-        $0.setTitle("# 건강을 위해서\n(식습관 개선, 물 마시기, 등산 등)", for: .normal)
-        $0.titleLabel?.lineBreakMode = .byWordWrapping
+        let firstLine = "# 건강을 위해서"
+        let secondLine = "(식습관 개선, 물 마시기, 등산 등)"
+        let firstLineAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.black,
+            .font: UIFont.pretendardBold(size: 17)]
+        let firstLineAttributedString = NSAttributedString(string: firstLine, attributes: firstLineAttributes)
+        let secondLineAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.black,
+            .font: UIFont.pretendardRegular(size: 15)]
+        let secondLineAttributedString = NSAttributedString(string: secondLine, attributes: secondLineAttributes)
+        let combinedString = NSMutableAttributedString()
+        combinedString.append(firstLineAttributedString)
+        combinedString.append(NSAttributedString(string: "\n"))
+        combinedString.append(secondLineAttributedString)
+        $0.titleLabel?.numberOfLines = 0
         $0.titleLabel?.textAlignment = .center
-        $0.setTitleColor(.black, for: .normal)
+        $0.setAttributedTitle(combinedString, for: .normal)
+        
+        $0.titleLabel?.numberOfLines = 0
+        $0.titleLabel?.textAlignment = .center
+        $0.setAttributedTitle(combinedString, for: .normal)
         $0.layer.cornerRadius = 15
         $0.backgroundColor = UIColor.white
         $0.layer.borderWidth = 1
@@ -68,18 +111,6 @@ class TargetViewController: UIViewController {
         $0.isSelected = false
         return $0
     }(UIButton())
-    
-//    let categoryButton3: UIButton = {
-//        var attributedString = NSMutableAttributedString(string: "# 건강을 위해서\n(식습관 개선, 물 마시기, 등산 등)")
-//        attributedString.addAttribute(.font, value: UIFont.notoSansBold(size: 17), range: NSRange(location: 0, length: 10))
-//        attributedString.addAttribute(.font, value: UIFont.notoSansRegular(size: 10), range: NSRange(location: 11, length: 5))
-//        attributedString.addAttribute(.foregroundColor, value: UIColor.black, range: NSRange(location: 0, length: attributedString.length))
-//        $0.setAttributedTitle(attributedString, for: .normal)
-//        $0.layer.cornerRadius = 15
-//        $0.backgroundColor = UIColor.white
-//        $0.isSelected = false
-//        return $0
-//    }(UIButton())
     
     let nextButton: UIButton = {
         var attributedString = NSMutableAttributedString(string: "확인")
@@ -109,7 +140,6 @@ class TargetViewController: UIViewController {
         nextButton.addTarget(self, action: #selector(buttonClicked(_:)), for: .touchUpInside)
     }
     
-    
 //MARK: - set UI
     func setUI() {
         view.addSubview(categoryLabel)
@@ -119,7 +149,7 @@ class TargetViewController: UIViewController {
         view.addSubview(nextButton)
         
         categoryLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(120)
+            make.top.equalTo(UIScreen.main.bounds.height / 3 + 60)
             make.leading.trailing.equalToSuperview().inset(40)
         }
         categoryButton1.snp.makeConstraints { make in
@@ -148,7 +178,6 @@ class TargetViewController: UIViewController {
     }
     
 //MARK: - function
-
     @objc func buttonClicked(_ sender: UIButton) {
         
         if sender == categoryButton1 {
@@ -218,7 +247,5 @@ class TargetViewController: UIViewController {
             nextButton.isEnabled = false
             nextButton.backgroundColor = UIColor.gray
         }
-        
     }
-    
 }

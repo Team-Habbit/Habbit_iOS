@@ -61,15 +61,19 @@ class GoalViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setUI()
-        buttonValid()
-        
+        targetTextField.delegate = self
         nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        targetTextField.becomeFirstResponder()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         targetTextField.resignFirstResponder()
     }
-//MARK: - set UI
+    //MARK: - set UI
     func setUI() {
         view.addSubview(targetLabel)
         view.addSubview(targetInputView)
@@ -97,16 +101,6 @@ class GoalViewController: UIViewController {
         }
     }
 
-    func buttonValid() {
-        if textfieldString == "" {
-            nextButton.isEnabled = false
-            nextButton.backgroundColor = UIColor.gray
-        } else {
-            nextButton.isEnabled = true
-            nextButton.backgroundColor = UIColor.habbitBlack
-        }
-    }
-    
     @objc func textFieldDidChange(_ textField: UITextField) {
         textfieldString = textField.text ?? ""
         print(textfieldString)
@@ -117,4 +111,12 @@ class GoalViewController: UIViewController {
         vc.targetString = textfieldString
         navigationController?.pushViewController(vc, animated: true)
     }
+}
+
+// MARK: - Keyboard
+extension GoalViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            targetTextField.resignFirstResponder()
+            return true
+        }
 }

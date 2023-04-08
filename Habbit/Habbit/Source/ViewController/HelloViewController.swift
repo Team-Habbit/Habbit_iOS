@@ -5,11 +5,19 @@
 //  Created by 박현준 on 2023/04/08.
 //
 
+//
+//  HelloViewController.swift
+//  Habbit
+//
+//  Created by 박현준 on 2023/04/08.
+//
+
 import UIKit
 import SnapKit
 
 class HelloViewController: UIViewController {
 
+//MARK: - UI Components
     let helloLabel: UILabel = {
         $0.text = "안녕하세요!"
         $0.font = UIFont.cafe24Ssurround(size: 20)
@@ -28,7 +36,7 @@ class HelloViewController: UIViewController {
         return $0
     }(UIButton())
     
-    
+//MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -37,6 +45,7 @@ class HelloViewController: UIViewController {
         nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
     }
     
+//MARK: - set UI
     func setUI() {
         view.addSubview(helloLabel)
         view.addSubview(nextButton)
