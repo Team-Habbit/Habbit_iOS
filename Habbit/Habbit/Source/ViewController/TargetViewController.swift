@@ -83,7 +83,7 @@ class TargetViewController: UIViewController {
     
     let nextButton: UIButton = {
         var attributedString = NSMutableAttributedString(string: "확인")
-        attributedString.addAttribute(.font, value: UIFont.notoSansBold(size: 16), range: NSRange(location: 0, length: attributedString.length))
+        attributedString.addAttribute(.font, value: UIFont.pretendardBold(size: 16), range: NSRange(location: 0, length: attributedString.length))
         attributedString.addAttribute(.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: attributedString.length))
         $0.setAttributedTitle(attributedString, for: .normal)
         $0.layer.cornerRadius = 16
