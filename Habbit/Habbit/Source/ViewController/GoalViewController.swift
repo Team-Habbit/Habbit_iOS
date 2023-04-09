@@ -46,7 +46,7 @@ class GoalViewController: UIViewController {
     }(UITextField())
     
     let nextButton: UIButton = {
-        var attributedString = NSMutableAttributedString(string: "완료")
+        var attributedString = NSMutableAttributedString(string: "다음 단계로")
         attributedString.addAttribute(.font, value: UIFont.pretendardBold(size: 16), range: NSRange(location: 0, length: attributedString.length))
         attributedString.addAttribute(.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: attributedString.length))
         $0.setAttributedTitle(attributedString, for: .normal)

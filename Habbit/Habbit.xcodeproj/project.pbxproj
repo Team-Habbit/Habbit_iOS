@@ -35,6 +35,7 @@
 		47D8644129E1990100B3DD28 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 47D8643729E1990100B3DD28 /* Pretendard-ExtraBold.otf */; };
 		47D8644329E1998F00B3DD28 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D8644229E1998F00B3DD28 /* UIFont.swift */; };
 		47D8644529E1AA4B00B3DD28 /* Cafe24Ssurround.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 47D8644429E1AA4B00B3DD28 /* Cafe24Ssurround.ttf */; };
+		47D8644A29E1CF7700B3DD28 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D8644929E1CF7700B3DD28 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		47D8643729E1990100B3DD28 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
 		47D8644229E1998F00B3DD28 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		47D8644429E1AA4B00B3DD28 /* Cafe24Ssurround.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24Ssurround.ttf; sourceTree = "<group>"; };
+		47D8644929E1CF7700B3DD28 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 				47D8642B29E193F600B3DD28 /* HelloViewController.swift */,
 				47D8642929E1884100B3DD28 /* GoalViewController.swift */,
 				47D8642429E155F000B3DD28 /* TargetViewController.swift */,
+				47D8644929E1CF7700B3DD28 /* HomeViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				47D8642A29E1884100B3DD28 /* GoalViewController.swift in Sources */,
 				47D8642529E155F000B3DD28 /* TargetViewController.swift in Sources */,
 				47D8642829E164C700B3DD28 /* UIColor.swift in Sources */,
+				47D8644A29E1CF7700B3DD28 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

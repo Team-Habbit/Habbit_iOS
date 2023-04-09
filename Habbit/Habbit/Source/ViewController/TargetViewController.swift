@@ -113,7 +113,7 @@ class TargetViewController: UIViewController {
     }(UIButton())
     
     let nextButton: UIButton = {
-        var attributedString = NSMutableAttributedString(string: "확인")
+        var attributedString = NSMutableAttributedString(string: "다음 단계로")
         attributedString.addAttribute(.font, value: UIFont.pretendardBold(size: 16), range: NSRange(location: 0, length: attributedString.length))
         attributedString.addAttribute(.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: attributedString.length))
         $0.setAttributedTitle(attributedString, for: .normal)
@@ -149,23 +149,23 @@ class TargetViewController: UIViewController {
         view.addSubview(nextButton)
         
         categoryLabel.snp.makeConstraints { make in
-            make.top.equalTo(UIScreen.main.bounds.height / 3 + 60)
+            make.bottom.equalTo(categoryButton1.snp.top).inset(-40)
             make.leading.trailing.equalToSuperview().inset(40)
         }
         categoryButton1.snp.makeConstraints { make in
-            make.top.equalTo(categoryLabel.snp.bottom).inset(-40)
             make.centerX.equalToSuperview()
             make.width.equalTo(283)
             make.height.equalTo(68)
+            make.bottom.equalTo(categoryButton2.snp.top).inset(-11)
         }
         categoryButton2.snp.makeConstraints { make in
-            make.top.equalTo(categoryButton1.snp.bottom).inset(-11)
+            make.bottom.equalTo(categoryButton3.snp.top).inset(-11)
             make.centerX.equalToSuperview()
             make.width.equalTo(283)
             make.height.equalTo(68)
         }
         categoryButton3.snp.makeConstraints { make in
-            make.top.equalTo(categoryButton2.snp.bottom).inset(-11)
+            make.bottom.equalTo(nextButton.snp.top).inset(-50)
             make.centerX.equalToSuperview()
             make.width.equalTo(283)
             make.height.equalTo(68)
