@@ -90,18 +90,13 @@ class HomeViewController: UIViewController {
     }()
     
     var habbitImageView: UIImageView = {
-//        $0.image = UIImage(named: "habbit_full")
         $0.image = UIImage(named: "habbit")
-        return $0
-    }(UIImageView())
-    
-    let carrotHolder: UIImageView = {
-        $0.image = UIImage(named: "carrotHolder")
         return $0
     }(UIImageView())
     
     var carrotButton: UIButton = {
         $0.setImage(UIImage(named: "carrot"), for: .normal)
+        $0.setImage(UIImage(named: "finishCarrot"), for: .selected)
         return $0
     }(UIButton())
     
@@ -112,6 +107,11 @@ class HomeViewController: UIViewController {
         $0.textAlignment = .center
         return $0
     }(UILabel())
+    
+    let vectorImage: UIImageView = {
+        $0.image = UIImage(named: "vector")
+        return $0
+    }(UIImageView())
     
     let totalLabel: UILabel = {
         $0.text = "총 달성률"
@@ -134,6 +134,18 @@ class HomeViewController: UIViewController {
         return $0
     }(UILabel())
     
+    let recentCarrotButton: UIButton = {
+        var attributedString = NSMutableAttributedString(string: "OO님은 당근을 3번 먹였어요")
+        attributedString.addAttribute(.font, value: UIFont.pretendardBold(size: 16), range: NSRange(location: 0, length: 8))
+        attributedString.addAttribute(.font, value: UIFont.cafe24Ssurround(size: 32), range: NSRange(location: 8, length: 2))
+        attributedString.addAttribute(.font, value: UIFont.pretendardBold(size: 16), range: NSRange(location: 10, length: 6))
+        attributedString.addAttribute(.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: attributedString.length))
+        $0.setAttributedTitle(attributedString, for: .normal)
+        $0.layer.cornerRadius = 13
+        $0.backgroundColor = UIColor.habbitBlack
+        return $0
+    }(UIButton())
+    
     private var goal: Goal
     
     init(goal: Goal) {
@@ -152,15 +164,14 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .white
         setUI()
         setUpBarButton()
-        backgroundSrcollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height * 2 - 200)
+        backgroundSrcollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + (view.frame.height / 2))
         carrotButton.addTarget(self, action: #selector(carrotButtonDidTap), for: .touchUpInside)
     }
     
 //MARK: - set UI
     func setUpBarButton() {
         let calendarBarbutton = UIBarButtonItem(
-            image: UIImage(named: "calendar")?
-                .withTintColor(.habbitBlack, renderingMode: .alwaysOriginal),
+            image: UIImage(named: "calendar")?.withRenderingMode(.alwaysOriginal),
             style: .plain,
             target: self,
             action: #selector(calendarButtonDidTap)
@@ -177,12 +188,13 @@ class HomeViewController: UIViewController {
         backgroundSrcollView.addSubview(secondMessageLabel)
         backgroundSrcollView.addSubview(thanksLabel)
         backgroundSrcollView.addSubview(habbitImageView)
-        backgroundSrcollView.addSubview(carrotHolder)
         backgroundSrcollView.addSubview(carrotButton)
         backgroundSrcollView.addSubview(eatCarrotLabel)
+        backgroundSrcollView.addSubview(vectorImage)
         backgroundSrcollView.addSubview(totalLabel)
         backgroundSrcollView.addSubview(totalImageView)
         backgroundSrcollView.addSubview(recentLabel)
+        backgroundSrcollView.addSubview(recentCarrotButton)
         backgroundSrcollView.sendSubviewToBack(habbitImageView)
         
         backgroundSrcollView.snp.makeConstraints { make in
@@ -190,7 +202,7 @@ class HomeViewController: UIViewController {
             make.leading.trailing.equalToSuperview()
         }
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(30)
+            make.top.equalToSuperview().inset(10)
             make.centerX.equalToSuperview()
         }
         goalLabel.snp.makeConstraints { make in
@@ -198,7 +210,7 @@ class HomeViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         habbitImageView.snp.makeConstraints { make in
-            make.top.equalTo(goalLabel.snp.bottom).inset(-40)
+            make.top.equalTo(goalLabel.snp.bottom).inset(-25)
             make.centerX.equalToSuperview()
             make.width.height.equalTo(385)
         }
@@ -218,24 +230,23 @@ class HomeViewController: UIViewController {
             make.top.equalTo(goalLabel.snp.bottom).inset(-255)
             make.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
         }
-        carrotHolder.snp.makeConstraints { make in
-            make.top.equalTo(habbitImageView.snp.bottom).inset(-60)
+        carrotButton.snp.makeConstraints { make in
+            make.top.equalTo(habbitImageView.snp.bottom).inset(-35)
             make.centerX.equalToSuperview()
-            make.height.equalTo(120)
+            make.height.equalTo(116)
             make.width.equalTo(120)
         }
-        carrotButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalTo(carrotHolder.snp.centerY)
-            make.height.equalTo(200)
-            make.width.equalTo(200)
-        }
         eatCarrotLabel.snp.makeConstraints { make in
-            make.top.equalTo(carrotHolder.snp.bottom).inset(-12)
+            make.top.equalTo(carrotButton.snp.bottom).inset(-12)
             make.centerX.equalToSuperview()
+        }
+        vectorImage.snp.makeConstraints { make in
+            make.top.equalTo(eatCarrotLabel.snp.bottom).inset(-66)
+            make.centerX.equalToSuperview()
+            make.height.width.equalTo(17)
         }
         totalLabel.snp.makeConstraints { make in
-            make.top.equalTo(eatCarrotLabel.snp.bottom).inset(-75)
+            make.top.equalTo(vectorImage.snp.bottom).inset(-35)
             make.centerX.equalToSuperview()
         }
         totalImageView.snp.makeConstraints { make in
@@ -244,8 +255,14 @@ class HomeViewController: UIViewController {
             make.width.equalTo(UIScreen.main.bounds.width)
         }
         recentLabel.snp.makeConstraints { make in
-            make.top.equalTo(totalImageView.snp.bottom).inset(-70)
+            make.top.equalTo(totalImageView.snp.bottom).inset(-100)
             make.centerX.equalToSuperview()
+        }
+        recentCarrotButton.snp.makeConstraints { make in
+            make.top.equalTo(recentLabel.snp.bottom).inset(-20)
+            make.centerX.equalToSuperview()
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(33)
+            make.height.equalTo(67)
         }
     }
     
@@ -255,7 +272,8 @@ class HomeViewController: UIViewController {
         thanksLabel.isHidden = false
         firstMessageLabel.isHidden = true
         secondMessageLabel.isHidden = true
-        carrotButton.isHidden = true
+        carrotButton.isSelected = true
+        
         eatCarrotLabel.text = "주기 완료"
         habbitImageView.image = UIImage(named: "habbitFull")
     }
