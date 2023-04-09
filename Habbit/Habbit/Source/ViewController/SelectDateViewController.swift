@@ -193,19 +193,19 @@ extension SelectDateViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         if startDate == nil && endDate == nil {
             startDate = date
-            datesRange = [startDate!]
+            datesRange = [startDate ?? Date()]
             endDate = nil
             return
         }
         
         if startDate != nil && endDate == nil {
             if date <= startDate! {
-                calendar.deselect(startDate!)
+                calendar.deselect(startDate ?? Date())
                 startDate = date
-                datesRange = [startDate!]
+                datesRange = [startDate ?? Date()]
             } else {
                 endDate = date
-                datesRange = datesRange(from: startDate!, to: endDate!)
+                datesRange = datesRange(from: startDate ?? Date(), to: endDate ?? Date())
                 datesRange?.forEach { calendar.select($0) }
             }
             return
