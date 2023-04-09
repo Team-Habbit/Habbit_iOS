@@ -10,6 +10,7 @@
 		1E3D43A129E15C3700891D75 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D43A029E15C3700891D75 /* PaddingLabel.swift */; };
 		1E3D43A329E15C4300891D75 /* PaddingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D43A229E15C4300891D75 /* PaddingButton.swift */; };
 		1E3D43A529E15C5000891D75 /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D43A429E15C5000891D75 /* Padding.swift */; };
+		1E6C991B29E25E380079340E /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 1E6C991A29E25E380079340E /* FSCalendar */; };
 		1E8F521029E044620001CA9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F520F29E044620001CA9E /* AppDelegate.swift */; };
 		1E8F521229E044620001CA9E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F521129E044620001CA9E /* SceneDelegate.swift */; };
 		1E8F521429E044620001CA9E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F521329E044620001CA9E /* MainViewController.swift */; };
@@ -96,6 +97,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47D8641E29E045AF00B3DD28 /* SnapKit in Frameworks */,
+				1E6C991B29E25E380079340E /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +278,7 @@
 			name = Habbit;
 			packageProductDependencies = (
 				47D8641D29E045AF00B3DD28 /* SnapKit */,
+				1E6C991A29E25E380079340E /* FSCalendar */,
 			);
 			productName = Habbit;
 			productReference = 1E8F520C29E044620001CA9E /* Habbit.app */;
@@ -351,6 +354,7 @@
 			mainGroup = 1E8F520329E044620001CA9E;
 			packageReferences = (
 				47D8641C29E045AF00B3DD28 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				1E6C991929E25E380079340E /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			productRefGroup = 1E8F520D29E044620001CA9E /* Products */;
 			projectDirPath = "";
@@ -750,6 +754,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1E6C991929E25E380079340E /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		47D8641C29E045AF00B3DD28 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -761,6 +773,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1E6C991A29E25E380079340E /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E6C991929E25E380079340E /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
 		47D8641D29E045AF00B3DD28 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 47D8641C29E045AF00B3DD28 /* XCRemoteSwiftPackageReference "SnapKit" */;
