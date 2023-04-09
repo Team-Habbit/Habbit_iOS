@@ -11,4 +11,15 @@ enum GoalCategory {
     case selfDevelopment
     case productivity
     case wellness
+    
+    var index: String {
+        switch self {
+        case .selfDevelopment:
+            return "0"
+        case .productivity:
+            return "1"
+        case .wellness:
+            return "2"
+        }
+    }
 }

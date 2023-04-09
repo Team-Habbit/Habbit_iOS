@@ -139,28 +139,35 @@ class HomeViewController: UIViewController {
     init(goal: Goal) {
         self.goal = goal
         super.init(nibName: nil, bundle: nil)
-        print("\(goal)")
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
 //MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        self.navigationController?.navigationBar.isHidden = true
         setUI()
+        setUpBarButton()
         backgroundSrcollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height * 2 - 200)
-        
         carrotButton.addTarget(self, action: #selector(carrotButtonDidTap), for: .touchUpInside)
     }
     
-
-    
 //MARK: - set UI
+    func setUpBarButton() {
+        let calendarBarbutton = UIBarButtonItem(
+            image: UIImage(named: "calendar")?
+                .withTintColor(.habbitBlack, renderingMode: .alwaysOriginal),
+            style: .plain,
+            target: self,
+            action: #selector(calendarButtonDidTap)
+        )
+        navigationItem.rightBarButtonItem = calendarBarbutton
+    }
+    
     func setUI() {
         view.addSubview(backgroundSrcollView)
         backgroundSrcollView.addSubview(titleLabel)
@@ -251,5 +258,11 @@ class HomeViewController: UIViewController {
         carrotButton.isHidden = true
         eatCarrotLabel.text = "주기 완료"
         habbitImageView.image = UIImage(named: "habbitFull")
+    }
+    
+    @objc func calendarButtonDidTap() {
+        let carrotCalendarVC = CarrotCalendarViewController(goal: goal)
+//        navigationController?.pushViewController(carrotCalendarVC, animated: true)
+        present(carrotCalendarVC, animated: true)
     }
 }

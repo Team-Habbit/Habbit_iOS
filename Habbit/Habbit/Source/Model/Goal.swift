@@ -10,5 +10,22 @@ import Foundation
 struct Goal {
     let name: String
     let category: GoalCategory
-    let aimedPeriod: [Date]
+    let aimedPeriod: [DailyTask]
+    
+    var startDate: Date {
+        aimedPeriod.first?.date ?? Date()
+    }
+    
+    var endDate: Date {
+        aimedPeriod.last?.date ?? Date()
+    }
+    
+    func toDTO() -> GoalDTO {
+        return GoalDTO(
+            goalName: name,
+            categoryName: category.index,
+            startDate: startDate.formattedString,
+            endDate: endDate.formattedString
+        )
+    }
 }

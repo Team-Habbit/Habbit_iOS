@@ -59,6 +59,23 @@ final class CarrotCalendarViewController: UIViewController {
         return calendar
     }()
     
+//    private let startDate: Date
+//    private let endDate: Date
+    private let userTasks: [DailyTask]
+    
+    init(goal: Goal) {
+        print(goal)
+        self.userTasks = goal.aimedPeriod
+//        self.startDate = goal.startDate
+//        self.endDate = goal.endDate
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -114,7 +131,18 @@ extension CarrotCalendarViewController: FSCalendarDataSource {
 
 extension CarrotCalendarViewController: FSCalendarDelegateAppearance {
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
-        let image = UIImage(named: "carrot.fill")?.resized(to: CGSize(width: 38, height: 38))
+        let userPeriodDates = userTasks.map { $0.date }
+        if !userPeriodDates.contains(date) {
+            return nil
+        }
+        
+        let targetTask = userTasks.first {
+            $0.date == date
+        }
+        
+        guard let targetTask = targetTask else { return nil }
+        let image = targetTask.isCompleted ? UIImage(named: "carrot")?.resized(to: CGSize(width: 38, height: 38)): UIImage(systemName: "pencil")?.resized(to: CGSize(width: 38, height: 38))
+        
         return image
     }
     
@@ -138,13 +166,17 @@ extension CarrotCalendarViewController: FSCalendarDelegateAppearance {
 //    }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
-        
-        let today = Calendar.current.startOfDay(for: Date())
-        if date.formattedString < today.formattedString {
+        let userPeriodDates = userTasks.map { $0.date }
+        if !userPeriodDates.contains(date) {
             return .secondaryLabel
-        } else {
-            return .label
         }
+        
+        let targetTask = userTasks.first {
+            $0.date == date
+        }
+        
+        guard let targetTask = targetTask else { return nil }
+        return targetTask.isCompleted ? .label : .secondaryLabel
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleSelectionColorFor date: Date) -> UIColor? {
@@ -212,3 +244,4 @@ private extension CarrotCalendarViewController {
         }
     }
 }
+

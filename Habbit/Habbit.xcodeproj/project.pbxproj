@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1E0DBF5529E2921A00F88549 /* GoalCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0DBF5429E2921A00F88549 /* GoalCategory.swift */; };
 		1E0DBF5729E2923F00F88549 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0DBF5629E2923F00F88549 /* Goal.swift */; };
+		1E0DBF5929E2AA6700F88549 /* GoalDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0DBF5829E2AA6700F88549 /* GoalDTO.swift */; };
+		1E0DBF5B29E2AA7400F88549 /* DailyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0DBF5A29E2AA7400F88549 /* DailyTask.swift */; };
 		1E3D43A129E15C3700891D75 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D43A029E15C3700891D75 /* PaddingLabel.swift */; };
 		1E3D43A329E15C4300891D75 /* PaddingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D43A229E15C4300891D75 /* PaddingButton.swift */; };
 		1E3D43A529E15C5000891D75 /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D43A429E15C5000891D75 /* Padding.swift */; };
@@ -66,6 +68,8 @@
 /* Begin PBXFileReference section */
 		1E0DBF5429E2921A00F88549 /* GoalCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCategory.swift; sourceTree = "<group>"; };
 		1E0DBF5629E2923F00F88549 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		1E0DBF5829E2AA6700F88549 /* GoalDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDTO.swift; sourceTree = "<group>"; };
+		1E0DBF5A29E2AA7400F88549 /* DailyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTask.swift; sourceTree = "<group>"; };
 		1E3D43A029E15C3700891D75 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		1E3D43A229E15C4300891D75 /* PaddingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingButton.swift; sourceTree = "<group>"; };
 		1E3D43A429E15C5000891D75 /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
@@ -227,6 +231,8 @@
 			children = (
 				1E0DBF5429E2921A00F88549 /* GoalCategory.swift */,
 				1E0DBF5629E2923F00F88549 /* Goal.swift */,
+				1E0DBF5A29E2AA7400F88549 /* DailyTask.swift */,
+				1E0DBF5829E2AA6700F88549 /* GoalDTO.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -444,6 +450,7 @@
 				1E3D43A529E15C5000891D75 /* Padding.swift in Sources */,
 				1E8F521429E044620001CA9E /* MainViewController.swift in Sources */,
 				1E3D43A129E15C3700891D75 /* PaddingLabel.swift in Sources */,
+				1E0DBF5929E2AA6700F88549 /* GoalDTO.swift in Sources */,
 				1E0DBF5529E2921A00F88549 /* GoalCategory.swift in Sources */,
 				1E8F521029E044620001CA9E /* AppDelegate.swift in Sources */,
 				47D8642C29E193F600B3DD28 /* HelloViewController.swift in Sources */,
@@ -455,6 +462,7 @@
 				1E0DBF5729E2923F00F88549 /* Goal.swift in Sources */,
 				47D8642529E155F000B3DD28 /* TargetViewController.swift in Sources */,
 				47D8642829E164C700B3DD28 /* UIColor.swift in Sources */,
+				1E0DBF5B29E2AA7400F88549 /* DailyTask.swift in Sources */,
 				1E6C991F29E2659C0079340E /* FixedSizePaddingLabel.swift in Sources */,
 				47D8644A29E1CF7700B3DD28 /* HomeViewController.swift in Sources */,
 			);
