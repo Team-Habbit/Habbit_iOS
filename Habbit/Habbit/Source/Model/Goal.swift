@@ -8,6 +8,7 @@
 import Foundation
 
 final class Goal {
+    let userName: String
     let name: String
     let category: GoalCategory
     let aimedPeriod: [DailyTask]
@@ -20,7 +21,8 @@ final class Goal {
         aimedPeriod.last?.date ?? Date()
     }
     
-    init(name: String, category: GoalCategory, aimedPeriod: [DailyTask]) {
+    init(userName: String, name: String, category: GoalCategory, aimedPeriod: [DailyTask]) {
+        self.userName = userName
         self.name = name
         self.category = category
         self.aimedPeriod = aimedPeriod
@@ -34,12 +36,4 @@ final class Goal {
         targetDate?.isCompleted = true
     }
     
-//    func toDTO() -> GoalDTO {
-//        return GoalDTO(
-//            goalName: name,
-//            categoryName: category.index,
-//            startDate: startDate.formattedString,
-//            endDate: endDate.formattedString
-//        )
-//    }
 }

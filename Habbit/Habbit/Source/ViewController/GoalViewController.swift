@@ -20,6 +20,9 @@ class GoalViewController: UIViewController {
             }
         }
     }
+//MARK: - Components
+    var userName = ""
+    
     
 //MARK: - UI Components
     private let indicateImage: UIImageView = {
@@ -65,8 +68,6 @@ class GoalViewController: UIViewController {
         return $0
     }(UIButton())
     
-    var userName = ""
-    
 //MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +76,7 @@ class GoalViewController: UIViewController {
         setNavigationBarButton()
         targetTextField.delegate = self
         nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
+        print("Goal : \(userName)")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -139,6 +141,7 @@ class GoalViewController: UIViewController {
     
     @objc func nextButtonDidTap() {
         let vc = TargetViewController()
+        vc.userName = userName
         vc.targetString = textfieldString
         navigationController?.pushViewController(vc, animated: true)
     }

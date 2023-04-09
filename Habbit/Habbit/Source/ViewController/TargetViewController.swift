@@ -17,6 +17,8 @@ class TargetViewController: UIViewController {
     var categoryClicked: GoalCategory?
     var isCategoryButtonClicked = false
     
+    var userName = ""
+    
 //MARK: - UI Components
     
     private let indicateImage: UIImageView = {
@@ -140,6 +142,7 @@ class TargetViewController: UIViewController {
         setNavigationBarButton()
         setUI()
         buttonTarget()
+        print("Target : \(userName)")
     }
     
     func buttonTarget() {
@@ -289,6 +292,7 @@ class TargetViewController: UIViewController {
         } else if sender == nextButton {
             // nextButton 실행코드
             let vc = SelectDateViewController()
+            vc.userName = userName
             vc.targetString = targetString
             vc.categoryClicked = categoryClicked
             navigationController?.pushViewController(vc, animated: true)

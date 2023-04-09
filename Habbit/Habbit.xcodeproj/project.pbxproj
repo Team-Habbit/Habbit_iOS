@@ -22,7 +22,6 @@
 		1E6C992A29E287560079340E /* CarrotCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C992929E287560079340E /* CarrotCalendarViewController.swift */; };
 		1E8F521029E044620001CA9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F520F29E044620001CA9E /* AppDelegate.swift */; };
 		1E8F521229E044620001CA9E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F521129E044620001CA9E /* SceneDelegate.swift */; };
-		1E8F521429E044620001CA9E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F521329E044620001CA9E /* MainViewController.swift */; };
 		1E8F521929E044630001CA9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8F521829E044630001CA9E /* Assets.xcassets */; };
 		1E8F521C29E044630001CA9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E8F521A29E044630001CA9E /* LaunchScreen.storyboard */; };
 		1E8F522729E044630001CA9E /* HabbitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F522629E044630001CA9E /* HabbitTests.swift */; };
@@ -46,6 +45,7 @@
 		47D8644329E1998F00B3DD28 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D8644229E1998F00B3DD28 /* UIFont.swift */; };
 		47D8644529E1AA4B00B3DD28 /* Cafe24Ssurround.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 47D8644429E1AA4B00B3DD28 /* Cafe24Ssurround.ttf */; };
 		47D8644A29E1CF7700B3DD28 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D8644929E1CF7700B3DD28 /* HomeViewController.swift */; };
+		47D8644F29E2D57F00B3DD28 /* FinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D8644E29E2D57F00B3DD28 /* FinishViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,7 +81,6 @@
 		1E8F520C29E044620001CA9E /* Habbit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habbit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8F520F29E044620001CA9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E8F521129E044620001CA9E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1E8F521329E044620001CA9E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1E8F521829E044630001CA9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E8F521B29E044630001CA9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E8F521D29E044630001CA9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -107,6 +106,7 @@
 		47D8644229E1998F00B3DD28 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		47D8644429E1AA4B00B3DD28 /* Cafe24Ssurround.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24Ssurround.ttf; sourceTree = "<group>"; };
 		47D8644929E1CF7700B3DD28 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		47D8644E29E2D57F00B3DD28 /* FinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,13 +222,13 @@
 			isa = PBXGroup;
 			children = (
 				1E714F6D29E1B80900A8818D /* Support */,
-				1E8F521329E044620001CA9E /* MainViewController.swift */,
 				47D8642B29E193F600B3DD28 /* HelloViewController.swift */,
 				47D8642929E1884100B3DD28 /* GoalViewController.swift */,
 				47D8642429E155F000B3DD28 /* TargetViewController.swift */,
 				1E6C991C29E2628F0079340E /* SelectDateViewController.swift */,
 				47D8644929E1CF7700B3DD28 /* HomeViewController.swift */,
 				1E6C992929E287560079340E /* CarrotCalendarViewController.swift */,
+				47D8644E29E2D57F00B3DD28 /* FinishViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -456,7 +456,6 @@
 				1E3D43A329E15C4300891D75 /* PaddingButton.swift in Sources */,
 				1E6C992429E265D20079340E /* UIImage+resized.swift in Sources */,
 				1E3D43A529E15C5000891D75 /* Padding.swift in Sources */,
-				1E8F521429E044620001CA9E /* MainViewController.swift in Sources */,
 				1E3D43A129E15C3700891D75 /* PaddingLabel.swift in Sources */,
 				1E0DBF5929E2AA6700F88549 /* GoalDTO.swift in Sources */,
 				1E0DBF5529E2921A00F88549 /* GoalCategory.swift in Sources */,
@@ -473,6 +472,7 @@
 				1E0DBF5B29E2AA7400F88549 /* DailyTask.swift in Sources */,
 				1E6C991F29E2659C0079340E /* FixedSizePaddingLabel.swift in Sources */,
 				47D8644A29E1CF7700B3DD28 /* HomeViewController.swift in Sources */,
+				47D8644F29E2D57F00B3DD28 /* FinishViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

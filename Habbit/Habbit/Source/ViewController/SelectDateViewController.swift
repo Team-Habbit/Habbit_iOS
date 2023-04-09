@@ -121,11 +121,12 @@ final class SelectDateViewController: UIViewController {
         button.isEnabled = false
         
         button.addAction(UIAction(handler: { [weak self] _ in
-            guard let targetString = self?.targetString,
+            guard let userName = self?.userName,
+                  let targetString = self?.targetString,
                   let categoryClicked = self?.categoryClicked,
                   let selectedDates = self?.selectedDates else { return }
             let aimedPeriod = selectedDates.compactMap { DailyTask(date: $0, isCompleted: false) }
-            let userGoal = Goal(name: targetString, category: categoryClicked, aimedPeriod: aimedPeriod)
+            let userGoal = Goal(userName: userName, name: targetString, category: categoryClicked, aimedPeriod: aimedPeriod)
             let nextViewController = HomeViewController(goal: userGoal)
             self?.navigationController?.setViewControllers([nextViewController], animated: true)
         }), for: .touchUpInside)
@@ -168,6 +169,7 @@ final class SelectDateViewController: UIViewController {
         }
     }
     
+    var userName: String?
     var targetString: String?
     var categoryClicked: GoalCategory?
     
@@ -175,6 +177,7 @@ final class SelectDateViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         layoutUI()
+        print("select : \(String(describing: userName))")
     }
 }
 

@@ -5,18 +5,23 @@
 //  Created by 박현준 on 2023/04/08.
 //
 
-//
-//  HelloViewController.swift
-//  Habbit
-//
-//  Created by 박현준 on 2023/04/08.
-//
-
 import UIKit
 import SnapKit
 
 class HelloViewController: UIViewController {
 
+    var textfieldString = "" {
+        didSet {
+            if !textfieldString.isEmpty {
+                nextButton.isEnabled = true
+                nextButton.backgroundColor = .habbitBlack
+            } else {
+                nextButton.isEnabled = false
+                nextButton.backgroundColor = .gray
+            }
+        }
+    }
+    
 //MARK: - UI Components
     let helloLabel: UILabel = {
         $0.text = "안녕하세요!\n당신의 이름을 알려주세요"
@@ -37,6 +42,11 @@ class HelloViewController: UIViewController {
     
     let targetTextField: UITextField = {
         $0.backgroundColor = .clear
+        $0.clearButtonMode = .whileEditing
+        $0.autocapitalizationType = .none
+        $0.spellCheckingType = .no
+        $0.smartDashesType = .no
+        $0.autocorrectionType = .no
         $0.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         return $0
     }(UITextField())
@@ -47,7 +57,7 @@ class HelloViewController: UIViewController {
         attributedString.addAttribute(.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: attributedString.length))
         $0.setAttributedTitle(attributedString, for: .normal)
         $0.layer.cornerRadius = 16
-        $0.backgroundColor = UIColor.habbitBlack
+        $0.backgroundColor = UIColor.gray
         $0.isEnabled = false
         return $0
     }(UIButton())
@@ -101,18 +111,15 @@ class HelloViewController: UIViewController {
     
     @objc func nextButtonDidTap() {
         let vc = GoalViewController()
-        vc.userName = userName ?? ""
+        vc.userName = textfieldString
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        if let text = textField.text {
-            userName = text
-            nextButton.isEnabled = true
-        } else {
-            nextButton.isEnabled = false
-        }
+        textfieldString = textField.text ?? ""
+        print(textfieldString)
     }
+    
 }
 
 extension HelloViewController: UITextFieldDelegate {

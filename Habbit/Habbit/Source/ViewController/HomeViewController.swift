@@ -133,13 +133,8 @@ class HomeViewController: UIViewController {
         return $0
     }(UILabel())
     
-    let recentCarrotButton: UIButton = {
-        var attributedString = NSMutableAttributedString(string: "OO님은 당근을 3번 먹였어요")
-        attributedString.addAttribute(.font, value: UIFont.pretendardBold(size: 16), range: NSRange(location: 0, length: 8))
-        attributedString.addAttribute(.font, value: UIFont.cafe24Ssurround(size: 32), range: NSRange(location: 8, length: 2))
-        attributedString.addAttribute(.font, value: UIFont.pretendardBold(size: 16), range: NSRange(location: 10, length: 6))
-        attributedString.addAttribute(.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: attributedString.length))
-        $0.setAttributedTitle(attributedString, for: .normal)
+    lazy var recentCarrotButton: UIButton = {
+        changeAttributedString("", $0)
         $0.layer.cornerRadius = 13
         $0.backgroundColor = UIColor.habbitBlack
         return $0
@@ -152,6 +147,7 @@ class HomeViewController: UIViewController {
         self.goal = goal
         goalLabel.text = goal.name
         super.init(nibName: nil, bundle: nil)
+        print(goal.userName)
     }
     
     @available(*, unavailable)
@@ -169,6 +165,7 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .white
         setUI()
         setUpBarButton()
+        setName()
         backgroundSrcollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + (view.frame.height / 2))
         carrotButton.addTarget(self, action: #selector(carrotButtonDidTap), for: .touchUpInside)
         scheduleDailyViewUpdate()
@@ -183,6 +180,10 @@ class HomeViewController: UIViewController {
             action: #selector(calendarButtonDidTap)
         )
         navigationItem.rightBarButtonItem = calendarBarbutton
+    }
+    
+    func setName() {
+        changeAttributedString("\(goal.userName)님은 당근을 3번 먹었어요", recentCarrotButton)
     }
     
     func setUI() {
@@ -273,16 +274,25 @@ class HomeViewController: UIViewController {
     }
     
 //MARK: - function
+    func changeAttributedString(_ text: String,_ button: UIButton) {
+        button.setTitle(text, for: .normal)
+        button.titleLabel?.font = UIFont.pretendardBold(size: 18)
+    }
+    
     @objc func carrotButtonDidTap() {
-        deliciousMessageLabel.isHidden = false
-        thanksLabel.isHidden = false
-        firstMessageLabel.isHidden = true
-        secondMessageLabel.isHidden = true
-        carrotButton.isSelected = true
-        eatCarrotLabel.text = "주기 완료"
-        habbitImageView.image = UIImage(named: "habbitFull")
-        
-        goal.complete(today: Date())
+        if carrotButton.isSelected == false {
+            deliciousMessageLabel.isHidden = false
+            thanksLabel.isHidden = false
+            firstMessageLabel.isHidden = true
+            secondMessageLabel.isHidden = true
+            carrotButton.isSelected = true
+            eatCarrotLabel.text = "주기 완료"
+            habbitImageView.image = UIImage(named: "habbitFull")
+            goal.complete(today: Date())
+        } else {
+            let vc = FinishViewController()
+            self.present(vc, animated: true)
+        }
     }
     
     @objc func calendarButtonDidTap() {
