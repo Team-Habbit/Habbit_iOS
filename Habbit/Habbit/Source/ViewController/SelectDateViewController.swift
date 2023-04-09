@@ -10,6 +10,10 @@ import SnapKit
 import FSCalendar
 
 final class SelectDateViewController: UIViewController {
+    private let indicateImage: UIImageView = {
+        $0.image = UIImage(named: "startThree")
+        return $0
+    }(UIImageView())
     
     private lazy var enterPeriodLabel: UILabel = {
         let label = UILabel()
@@ -120,7 +124,8 @@ final class SelectDateViewController: UIViewController {
             guard let targetString = self?.targetString,
                   let categoryClicked = self?.categoryClicked,
                   let selectedDates = self?.selectedDates else { return }
-            let userGoal = Goal(name: targetString, category: categoryClicked, aimedPeriod: selectedDates)
+            let aimedPriod = selectedDates.compactMap { DailyTask(date: $0, isCompleted: false) }
+            let userGoal = Goal(name: targetString, category: categoryClicked, aimedPeriod: aimedPriod)
             let nextViewController = HomeViewController(goal: userGoal)
             self?.navigationController?.pushViewController(nextViewController, animated: true)
         }), for: .touchUpInside)
@@ -324,6 +329,7 @@ private extension SelectDateViewController {
     }
     
     func layoutUI() {
+        view.addSubview(indicateImage)
         view.addSubview(enterPeriodLabel)
         view.addSubview(prevMonthButton)
         view.addSubview(nextMonthButton)
@@ -332,6 +338,12 @@ private extension SelectDateViewController {
         view.addSubview(calendar)
         view.addSubview(nextButton)
         
+        indicateImage.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(5)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(170)
+            make.height.equalTo(40)
+        }
         enterPeriodLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalTo(monthHeaderLabel.snp.top).offset(-44)

@@ -19,6 +19,11 @@ class TargetViewController: UIViewController {
     
 //MARK: - UI Components
     
+    private let indicateImage: UIImageView = {
+        $0.image = UIImage(named: "startTwo")
+        return $0
+    }(UIImageView())
+    
     let categoryLabel: UILabel = {
         $0.text = "목표에 해당하는 카테고리를 설정해주세요!"
         $0.font = UIFont.cafe24Ssurround(size: 20)
@@ -40,6 +45,7 @@ class TargetViewController: UIViewController {
             .font: UIFont.pretendardRegular(size: 15)]
         let secondLineAttributedString = NSAttributedString(string: secondLine, attributes: secondLineAttributes)
         let combinedString = NSMutableAttributedString()
+        let textAttachment = NSTextAttachment()
         combinedString.append(firstLineAttributedString)
         combinedString.append(NSAttributedString(string: "\n"))
         combinedString.append(secondLineAttributedString)
@@ -47,6 +53,8 @@ class TargetViewController: UIViewController {
         $0.titleLabel?.textAlignment = .left
         $0.setAttributedTitle(combinedString, for: .normal)
         
+        $0.setImage(UIImage(named: "categoryOne"), for: .normal)
+        $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 33)
         $0.layer.cornerRadius = 15
         $0.backgroundColor = UIColor.white
         $0.layer.borderWidth = 1
@@ -74,6 +82,8 @@ class TargetViewController: UIViewController {
         $0.titleLabel?.textAlignment = .left
         $0.setAttributedTitle(combinedString, for: .normal)
         
+        $0.setImage(UIImage(named: "categoryTwo"), for: .normal)
+        $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 33)
         $0.layer.cornerRadius = 15
         $0.backgroundColor = UIColor.white
         $0.layer.borderWidth = 1
@@ -98,12 +108,11 @@ class TargetViewController: UIViewController {
         combinedString.append(NSAttributedString(string: "\n"))
         combinedString.append(secondLineAttributedString)
         $0.titleLabel?.numberOfLines = 0
-        $0.titleLabel?.textAlignment = .center
-        $0.setAttributedTitle(combinedString, for: .normal)
-        
-        $0.titleLabel?.numberOfLines = 0
         $0.titleLabel?.textAlignment = .left
         $0.setAttributedTitle(combinedString, for: .normal)
+        
+        $0.setImage(UIImage(named: "categoryThree"), for: .normal)
+        $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 33)
         $0.layer.cornerRadius = 15
         $0.backgroundColor = UIColor.white
         $0.layer.borderWidth = 1
@@ -143,30 +152,37 @@ class TargetViewController: UIViewController {
     
 //MARK: - set UI
     func setUI() {
+        view.addSubview(indicateImage)
         view.addSubview(categoryLabel)
         view.addSubview(categoryButton1)
         view.addSubview(categoryButton2)
         view.addSubview(categoryButton3)
         view.addSubview(nextButton)
         
+        indicateImage.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(5)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(170)
+            make.height.equalTo(40)
+        }
         categoryLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(categoryButton1.snp.top).inset(-40)
+            make.top.equalTo(indicateImage.snp.bottom).inset(-45)
             make.leading.trailing.equalToSuperview().inset(40)
         }
         categoryButton1.snp.makeConstraints { make in
+            make.top.equalTo(categoryLabel.snp.bottom).inset(-68)
             make.centerX.equalToSuperview()
             make.width.equalTo(283)
             make.height.equalTo(68)
-            make.bottom.equalTo(categoryButton2.snp.top).inset(-11)
         }
         categoryButton2.snp.makeConstraints { make in
-            make.bottom.equalTo(categoryButton3.snp.top).inset(-11)
+            make.top.equalTo(categoryButton1.snp.bottom).inset(-23)
             make.centerX.equalToSuperview()
             make.width.equalTo(283)
             make.height.equalTo(68)
         }
         categoryButton3.snp.makeConstraints { make in
-            make.bottom.equalTo(nextButton.snp.top).inset(-50)
+            make.top.equalTo(categoryButton2.snp.bottom).inset(-23)
             make.centerX.equalToSuperview()
             make.width.equalTo(283)
             make.height.equalTo(68)

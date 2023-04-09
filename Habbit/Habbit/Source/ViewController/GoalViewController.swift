@@ -1,4 +1,3 @@
-//
 //  GoalViewController.swift
 //  Habbit
 //
@@ -23,6 +22,16 @@ class GoalViewController: UIViewController {
     }
     
 //MARK: - UI Components
+    private let indicateImage: UIImageView = {
+        $0.image = UIImage(named: "startOne")
+        return $0
+    }(UIImageView())
+    
+    private let targetItemImage: UIImageView = {
+        $0.image = UIImage(named: "targetItem")
+        return $0
+    }(UIImageView())
+    
     let targetLabel: UILabel = {
         $0.text = "어떤 목표를 설정하고 싶으신가요?"
         $0.font = UIFont.cafe24Ssurround(size: 20)
@@ -76,13 +85,27 @@ class GoalViewController: UIViewController {
     }
     //MARK: - set UI
     func setUI() {
+        view.addSubview(indicateImage)
+        view.addSubview(targetItemImage)
         view.addSubview(targetLabel)
         view.addSubview(targetInputView)
         targetInputView.addSubview(targetTextField)
         view.addSubview(nextButton)
         
+        indicateImage.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(5)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(170)
+            make.height.equalTo(40)
+        }
+        targetItemImage.snp.makeConstraints { make in
+            make.top.equalTo(indicateImage.snp.bottom).inset(-40)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(255)
+            make.height.equalTo(155)
+        }
         targetLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(200)
+            make.top.equalTo(targetItemImage.snp.bottom).inset(-40)
             make.centerX.equalToSuperview()
         }
         targetInputView.snp.makeConstraints { make in
