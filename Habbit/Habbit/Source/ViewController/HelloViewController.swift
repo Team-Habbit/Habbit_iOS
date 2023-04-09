@@ -63,7 +63,7 @@ class HelloViewController: UIViewController {
     @objc func nextButtonDidTap() {
         print("찍힘")
         let vc = GoalViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.setViewControllers([vc], animated: true)
     }
 
 }
