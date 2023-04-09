@@ -15,6 +15,7 @@
 		1E6C991F29E2659C0079340E /* FixedSizePaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C991E29E2659C0079340E /* FixedSizePaddingLabel.swift */; };
 		1E6C992229E265BB0079340E /* Date+formattedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C992129E265BB0079340E /* Date+formattedString.swift */; };
 		1E6C992429E265D20079340E /* UIImage+resized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C992329E265D20079340E /* UIImage+resized.swift */; };
+		1E6C992A29E287560079340E /* CarrotCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C992929E287560079340E /* CarrotCalendarViewController.swift */; };
 		1E8F521029E044620001CA9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F520F29E044620001CA9E /* AppDelegate.swift */; };
 		1E8F521229E044620001CA9E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F521129E044620001CA9E /* SceneDelegate.swift */; };
 		1E8F521429E044620001CA9E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F521329E044620001CA9E /* MainViewController.swift */; };
@@ -68,6 +69,7 @@
 		1E6C991E29E2659C0079340E /* FixedSizePaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedSizePaddingLabel.swift; sourceTree = "<group>"; };
 		1E6C992129E265BB0079340E /* Date+formattedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+formattedString.swift"; sourceTree = "<group>"; };
 		1E6C992329E265D20079340E /* UIImage+resized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+resized.swift"; sourceTree = "<group>"; };
+		1E6C992929E287560079340E /* CarrotCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrotCalendarViewController.swift; sourceTree = "<group>"; };
 		1E8F520C29E044620001CA9E /* Habbit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habbit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8F520F29E044620001CA9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E8F521129E044620001CA9E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				47D8642929E1884100B3DD28 /* GoalViewController.swift */,
 				47D8642429E155F000B3DD28 /* TargetViewController.swift */,
 				47D8644929E1CF7700B3DD28 /* HomeViewController.swift */,
+				1E6C992929E287560079340E /* CarrotCalendarViewController.swift */,
 				1E6C991C29E2628F0079340E /* SelectDateViewController.swift */,
 			);
 			path = ViewController;
@@ -441,6 +444,7 @@
 				1E8F521229E044620001CA9E /* SceneDelegate.swift in Sources */,
 				47D8644329E1998F00B3DD28 /* UIFont.swift in Sources */,
 				47D8642A29E1884100B3DD28 /* GoalViewController.swift in Sources */,
+				1E6C992A29E287560079340E /* CarrotCalendarViewController.swift in Sources */,
 				47D8642529E155F000B3DD28 /* TargetViewController.swift in Sources */,
 				47D8642829E164C700B3DD28 /* UIColor.swift in Sources */,
 				1E6C991F29E2659C0079340E /* FixedSizePaddingLabel.swift in Sources */,
