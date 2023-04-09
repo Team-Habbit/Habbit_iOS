@@ -7,16 +7,20 @@
 
 import Foundation
 
-struct DailyTask {
+final class DailyTask {
     let date: Date
-    let isCompleted: Bool
+    var isCompleted: Bool
     
+    init(date: Date, isCompleted: Bool) {
+        self.date = date
+        self.isCompleted = isCompleted
+    }
+        
     func isCompleted(of date: Date) -> Bool {
         if self.date == date {
             return isCompleted
         } else {
             return false
         }
-        
     }
 }

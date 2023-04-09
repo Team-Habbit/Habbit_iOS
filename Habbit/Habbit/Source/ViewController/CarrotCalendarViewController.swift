@@ -59,15 +59,14 @@ final class CarrotCalendarViewController: UIViewController {
         return calendar
     }()
     
-//    private let startDate: Date
-//    private let endDate: Date
-    private let userTasks: [DailyTask]
+    private var userTasks: [DailyTask] {
+        return goal.aimedPeriod
+    }
+    private let goal: Goal
     
     init(goal: Goal) {
         print(goal)
-        self.userTasks = goal.aimedPeriod
-//        self.startDate = goal.startDate
-//        self.endDate = goal.endDate
+        self.goal = goal
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -140,9 +139,10 @@ extension CarrotCalendarViewController: FSCalendarDelegateAppearance {
             $0.date == date
         }
         
+        let carrotImage = UIImage(named: "carrot")?.resized(to: CGSize(width: 38, height: 38))
+        let emptyImage = UIImage(named: "emptyCarrot")?.resized(to: CGSize(width: 38, height: 38))
         guard let targetTask = targetTask else { return nil }
-        let image = targetTask.isCompleted ? UIImage(named: "carrot")?.resized(to: CGSize(width: 38, height: 38)): UIImage(systemName: "pencil")?.resized(to: CGSize(width: 38, height: 38))
-        
+        let image = targetTask.isCompleted ? carrotImage : emptyImage
         return image
     }
     

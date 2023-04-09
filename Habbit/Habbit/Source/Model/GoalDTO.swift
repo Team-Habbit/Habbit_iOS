@@ -10,6 +10,6 @@ import Foundation
 struct GoalDTO: Codable {
     let goalName: String
     let categoryName: String
-    let startDate: String
-    let endDate: String
+    let period: [Date]
+    let endDate: Date
 }
