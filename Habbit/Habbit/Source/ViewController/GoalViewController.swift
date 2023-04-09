@@ -53,6 +53,11 @@ class GoalViewController: UIViewController {
     
     let targetTextField: UITextField = {
         $0.backgroundColor = .clear
+        $0.clearButtonMode = .whileEditing
+        $0.autocapitalizationType = .none
+        $0.spellCheckingType = .no
+        $0.smartDashesType = .no
+        $0.autocorrectionType = .no
         $0.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         return $0
     }(UITextField())

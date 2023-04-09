@@ -79,6 +79,7 @@ class HelloViewController: UIViewController {
         view.backgroundColor = .white
         targetTextField.delegate = self
         setUI()
+        setNavigationBarButton()
         nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
     }
     
@@ -107,6 +108,11 @@ class HelloViewController: UIViewController {
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(60)
         }
+    }
+    
+    func setNavigationBarButton() {
+        navigationItem.backButtonTitle = "이름 재설정"
+        navigationController?.navigationBar.tintColor = .darkGray
     }
     
     @objc func nextButtonDidTap() {
