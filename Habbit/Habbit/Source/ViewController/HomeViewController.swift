@@ -96,7 +96,7 @@ class HomeViewController: UIViewController {
     }(UIImageView())
     
     let carrotHolder: UIImageView = {
-        $0.image = UIImage(named: "carrot_holder")
+        $0.image = UIImage(named: "carrotHolder")
         return $0
     }(UIImageView())
     
@@ -250,6 +250,6 @@ class HomeViewController: UIViewController {
         secondMessageLabel.isHidden = true
         carrotButton.isHidden = true
         eatCarrotLabel.text = "주기 완료"
-        habbitImageView.image = UIImage(named: "habbit_full")
+        habbitImageView.image = UIImage(named: "habbitFull")
     }
 }
