@@ -92,7 +92,7 @@ class HomeViewController: UIViewController {
     }(UIButton())
     
     let eatCarrotLabel: UILabel = {
-        $0.text = "당근주기"
+        $0.text = "당근 주기"
         $0.font = UIFont.cafe24Ssurround(size: 17)
         $0.textColor = UIColor.black
         $0.textAlignment = .center
@@ -124,6 +124,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        self.navigationController?.navigationBar.isHidden = true
         setUI()
         backgroundSrcollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height * 2 - 200)
         
@@ -154,7 +155,7 @@ class HomeViewController: UIViewController {
             make.leading.trailing.equalToSuperview()
         }
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(10)
+            make.top.equalToSuperview().inset(30)
             make.centerX.equalToSuperview()
         }
         goalLabel.snp.makeConstraints { make in

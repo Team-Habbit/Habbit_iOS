@@ -44,7 +44,7 @@ class TargetViewController: UIViewController {
         combinedString.append(NSAttributedString(string: "\n"))
         combinedString.append(secondLineAttributedString)
         $0.titleLabel?.numberOfLines = 0
-        $0.titleLabel?.textAlignment = .center
+        $0.titleLabel?.textAlignment = .left
         $0.setAttributedTitle(combinedString, for: .normal)
         
         $0.layer.cornerRadius = 15
@@ -71,7 +71,7 @@ class TargetViewController: UIViewController {
         combinedString.append(NSAttributedString(string: "\n"))
         combinedString.append(secondLineAttributedString)
         $0.titleLabel?.numberOfLines = 0
-        $0.titleLabel?.textAlignment = .center
+        $0.titleLabel?.textAlignment = .left
         $0.setAttributedTitle(combinedString, for: .normal)
         
         $0.layer.cornerRadius = 15
@@ -102,7 +102,7 @@ class TargetViewController: UIViewController {
         $0.setAttributedTitle(combinedString, for: .normal)
         
         $0.titleLabel?.numberOfLines = 0
-        $0.titleLabel?.textAlignment = .center
+        $0.titleLabel?.textAlignment = .left
         $0.setAttributedTitle(combinedString, for: .normal)
         $0.layer.cornerRadius = 15
         $0.backgroundColor = UIColor.white
@@ -187,16 +187,25 @@ class TargetViewController: UIViewController {
                 isCategoryButtonClicked = true
                 categoryClicked = "내면적 성장을 위해서"
                 sender.backgroundColor = UIColor.habbitYellow
-                categoryButton2.isEnabled = false
-                categoryButton3.isEnabled = false
             } else {
-                sender.isSelected = false
-                sender.layer.borderColor = UIColor.black.cgColor
-                isCategoryButtonClicked = false
-                categoryClicked = ""
-                sender.backgroundColor = UIColor.white
-                categoryButton2.isEnabled = true
-                categoryButton3.isEnabled = true
+                if categoryButton2.isSelected == true || categoryButton3.isSelected == true {
+                    categoryButton2.isSelected = false
+                    categoryButton3.isSelected = false
+                    categoryButton2.layer.borderColor = UIColor.black.cgColor
+                    categoryButton3.layer.borderColor = UIColor.black.cgColor
+                    categoryButton2.backgroundColor = UIColor.white
+                    categoryButton3.backgroundColor = UIColor.white
+                    categoryClicked = "내면적 성장을 위해서"
+                    sender.isSelected = true
+                    sender.layer.borderColor = UIColor.habbitYellow.cgColor
+                    sender.backgroundColor = UIColor.habbitYellow
+                } else {
+                    sender.isSelected = false
+                    sender.layer.borderColor = UIColor.black.cgColor
+                    isCategoryButtonClicked = false
+                    categoryClicked = ""
+                    sender.backgroundColor = UIColor.white
+                }
             }
         } else if sender == categoryButton2 {
             if isCategoryButtonClicked == false {
@@ -205,16 +214,26 @@ class TargetViewController: UIViewController {
                 isCategoryButtonClicked = true
                 categoryClicked = "생산성 향상을 위해서"
                 sender.backgroundColor = UIColor.habbitYellow
-                categoryButton1.isEnabled = false
-                categoryButton3.isEnabled = false
+
             } else {
-                sender.isSelected = false
-                sender.layer.borderColor = UIColor.black.cgColor
-                isCategoryButtonClicked = false
-                categoryClicked = ""
-                sender.backgroundColor = UIColor.white
-                categoryButton1.isEnabled = true
-                categoryButton3.isEnabled = true
+                if categoryButton1.isSelected == true || categoryButton3.isSelected == true {
+                    categoryButton1.isSelected = false
+                    categoryButton3.isSelected = false
+                    categoryButton1.layer.borderColor = UIColor.black.cgColor
+                    categoryButton3.layer.borderColor = UIColor.black.cgColor
+                    categoryButton1.backgroundColor = UIColor.white
+                    categoryButton3.backgroundColor = UIColor.white
+                    categoryClicked = "생산성 향상을 위해서"
+                    sender.isSelected = true
+                    sender.layer.borderColor = UIColor.habbitYellow.cgColor
+                    sender.backgroundColor = UIColor.habbitYellow
+                } else {
+                    sender.isSelected = false
+                    sender.layer.borderColor = UIColor.black.cgColor
+                    isCategoryButtonClicked = false
+                    categoryClicked = ""
+                    sender.backgroundColor = UIColor.white
+                }
             }
         } else if sender == categoryButton3 {
             if isCategoryButtonClicked == false {
@@ -223,20 +242,33 @@ class TargetViewController: UIViewController {
                 isCategoryButtonClicked = true
                 categoryClicked = "건강을 위해서"
                 sender.backgroundColor = UIColor.habbitYellow
-                categoryButton1.isEnabled = false
-                categoryButton2.isEnabled = false
+                
             } else {
-                sender.isSelected = false
-                sender.layer.borderColor = UIColor.black.cgColor
-                isCategoryButtonClicked = false
-                categoryClicked = ""
-                sender.backgroundColor = UIColor.white
-                categoryButton1.isEnabled = true
-                categoryButton2.isEnabled = true
+                if categoryButton1.isSelected == true || categoryButton2.isSelected == true {
+                    categoryButton1.isSelected = false
+                    categoryButton2.isSelected = false
+                    categoryButton1.layer.borderColor = UIColor.black.cgColor
+                    categoryButton2.layer.borderColor = UIColor.black.cgColor
+                    categoryButton1.backgroundColor = UIColor.white
+                    categoryButton2.backgroundColor = UIColor.white
+                    categoryClicked = "건강을 위해서"
+                    sender.isSelected = true
+                    sender.layer.borderColor = UIColor.habbitYellow.cgColor
+                    sender.backgroundColor = UIColor.habbitYellow
+                } else {
+                    sender.isSelected = false
+                    sender.layer.borderColor = UIColor.black.cgColor
+                    isCategoryButtonClicked = false
+                    categoryClicked = ""
+                    sender.backgroundColor = UIColor.white
+                }
+                
             }
         } else if sender == nextButton {
             // nextButton 실행코드
             print("\(targetString)과 \(categoryClicked)")
+            let vc = HomeViewController()
+            navigationController?.pushViewController(vc, animated: true)
         }
         
         
