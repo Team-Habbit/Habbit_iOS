@@ -31,7 +31,7 @@ final class SelectDateViewController: UIViewController {
             .resized(to: CGSize(width: 16, height: 16))?
             .withTintColor(UIColor.habbitBlack, renderingMode: .alwaysOriginal)
         button.setImage(image, for: .normal)
-        button.addTarget(self, action: #selector(prevButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(prevMonthButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -42,7 +42,7 @@ final class SelectDateViewController: UIViewController {
             .withTintColor(UIColor.habbitBlack, renderingMode: .alwaysOriginal)
         
         button.setImage(image, for: .normal)
-        button.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(nextMonthButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -115,12 +115,21 @@ final class SelectDateViewController: UIViewController {
         button.layer.cornerRadius = 16
         button.backgroundColor = UIColor.gray
         button.isEnabled = false
+        
+        button.addAction(UIAction(handler: { [weak self] _ in
+            guard let targetString = self?.targetString,
+                  let categoryClicked = self?.categoryClicked,
+                  let selectedDates = self?.selectedDates else { return }
+            let userGoal = Goal(name: targetString, category: categoryClicked, aimedPeriod: selectedDates)
+            let nextViewController = HomeViewController()
+            self?.navigationController?.pushViewController(nextViewController, animated: true)
+        }), for: .touchUpInside)
         return button
     }()
     
     private var dateformatter = DateFormatter()
     
-    private var datesRange: [Date]? {
+    private var selectedDates: [Date]? {
         willSet {
             if newValue?.count ?? .zero > 1 {
                 nextButton.isEnabled = true
@@ -154,6 +163,9 @@ final class SelectDateViewController: UIViewController {
         }
     }
     
+    var targetString: String?
+    var categoryClicked: GoalCategory?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -164,13 +176,13 @@ final class SelectDateViewController: UIViewController {
 // MARK: - Selector Methods
 
 private extension SelectDateViewController {
-    @objc private func prevButtonTapped() {
+    @objc private func prevMonthButtonTapped() {
         let currentMonth = calendar.currentPage
         guard let previousMonth = Calendar.current.date(byAdding: .month, value: -1, to: currentMonth) else { return }
         calendar.setCurrentPage(previousMonth, animated: true)
     }
     
-    @objc private func nextButtonTapped() {
+    @objc private func nextMonthButtonTapped() {
         let currentMonth = calendar.currentPage
         guard let nextMonth = Calendar.current.date(byAdding: .month, value: 1, to: currentMonth) else { return }
         calendar.setCurrentPage(nextMonth, animated: true)
@@ -193,7 +205,7 @@ extension SelectDateViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         if startDate == nil && endDate == nil {
             startDate = date
-            datesRange = [startDate ?? Date()]
+            selectedDates = [startDate ?? Date()]
             endDate = nil
             return
         }
@@ -202,11 +214,11 @@ extension SelectDateViewController: FSCalendarDelegate {
             if date <= startDate! {
                 calendar.deselect(startDate ?? Date())
                 startDate = date
-                datesRange = [startDate ?? Date()]
+                selectedDates = [startDate ?? Date()]
             } else {
                 endDate = date
-                datesRange = datesRange(from: startDate ?? Date(), to: endDate ?? Date())
-                datesRange?.forEach { calendar.select($0) }
+                selectedDates = datesRange(from: startDate ?? Date(), to: endDate ?? Date())
+                selectedDates?.forEach { calendar.select($0) }
             }
             return
         }
@@ -284,7 +296,7 @@ private extension SelectDateViewController {
         calendar.selectedDates.forEach { calendar.deselect($0) }
         startDate = nil
         endDate = nil
-        datesRange = []
+        selectedDates = []
     }
     
     private func datesRange(from startDate: Date, to endDate: Date) -> [Date] {

@@ -13,8 +13,8 @@ import SnapKit
 class TargetViewController: UIViewController {
 
 //MARK: - Components
-    var targetString: String = ""
-    var categoryClicked: String = ""
+    var targetString: String?
+    var categoryClicked: GoalCategory?
     var isCategoryButtonClicked = false
     
 //MARK: - UI Components
@@ -128,6 +128,7 @@ class TargetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        setNavigationBarButton()
         setUI()
         buttonTarget()
     }
@@ -177,6 +178,11 @@ class TargetViewController: UIViewController {
         }
     }
     
+    func setNavigationBarButton() {
+        navigationItem.backButtonTitle = "목표 재설정"
+        navigationController?.navigationBar.tintColor = .darkGray
+    }
+    
 //MARK: - function
     @objc func buttonClicked(_ sender: UIButton) {
         
@@ -185,7 +191,7 @@ class TargetViewController: UIViewController {
                 sender.isSelected = true
                 sender.layer.borderColor = UIColor.habbitYellow.cgColor
                 isCategoryButtonClicked = true
-                categoryClicked = "내면적 성장을 위해서"
+                categoryClicked = .selfDevelopment
                 sender.backgroundColor = UIColor.habbitYellow
             } else {
                 if categoryButton2.isSelected == true || categoryButton3.isSelected == true {
@@ -195,7 +201,7 @@ class TargetViewController: UIViewController {
                     categoryButton3.layer.borderColor = UIColor.black.cgColor
                     categoryButton2.backgroundColor = UIColor.white
                     categoryButton3.backgroundColor = UIColor.white
-                    categoryClicked = "내면적 성장을 위해서"
+                    categoryClicked = .selfDevelopment
                     sender.isSelected = true
                     sender.layer.borderColor = UIColor.habbitYellow.cgColor
                     sender.backgroundColor = UIColor.habbitYellow
@@ -203,7 +209,7 @@ class TargetViewController: UIViewController {
                     sender.isSelected = false
                     sender.layer.borderColor = UIColor.black.cgColor
                     isCategoryButtonClicked = false
-                    categoryClicked = ""
+                    categoryClicked = nil
                     sender.backgroundColor = UIColor.white
                 }
             }
@@ -212,7 +218,7 @@ class TargetViewController: UIViewController {
                 sender.layer.borderColor = UIColor.habbitYellow.cgColor
                 sender.isSelected = true
                 isCategoryButtonClicked = true
-                categoryClicked = "생산성 향상을 위해서"
+                categoryClicked = .productivity
                 sender.backgroundColor = UIColor.habbitYellow
 
             } else {
@@ -223,7 +229,7 @@ class TargetViewController: UIViewController {
                     categoryButton3.layer.borderColor = UIColor.black.cgColor
                     categoryButton1.backgroundColor = UIColor.white
                     categoryButton3.backgroundColor = UIColor.white
-                    categoryClicked = "생산성 향상을 위해서"
+                    categoryClicked = .productivity
                     sender.isSelected = true
                     sender.layer.borderColor = UIColor.habbitYellow.cgColor
                     sender.backgroundColor = UIColor.habbitYellow
@@ -231,7 +237,7 @@ class TargetViewController: UIViewController {
                     sender.isSelected = false
                     sender.layer.borderColor = UIColor.black.cgColor
                     isCategoryButtonClicked = false
-                    categoryClicked = ""
+                    categoryClicked = nil
                     sender.backgroundColor = UIColor.white
                 }
             }
@@ -240,7 +246,7 @@ class TargetViewController: UIViewController {
                 sender.layer.borderColor = UIColor.habbitYellow.cgColor
                 sender.isSelected = true
                 isCategoryButtonClicked = true
-                categoryClicked = "건강을 위해서"
+                categoryClicked = .wellness
                 sender.backgroundColor = UIColor.habbitYellow
                 
             } else {
@@ -251,7 +257,7 @@ class TargetViewController: UIViewController {
                     categoryButton2.layer.borderColor = UIColor.black.cgColor
                     categoryButton1.backgroundColor = UIColor.white
                     categoryButton2.backgroundColor = UIColor.white
-                    categoryClicked = "건강을 위해서"
+                    categoryClicked = .wellness
                     sender.isSelected = true
                     sender.layer.borderColor = UIColor.habbitYellow.cgColor
                     sender.backgroundColor = UIColor.habbitYellow
@@ -259,18 +265,18 @@ class TargetViewController: UIViewController {
                     sender.isSelected = false
                     sender.layer.borderColor = UIColor.black.cgColor
                     isCategoryButtonClicked = false
-                    categoryClicked = ""
+                    categoryClicked = nil
                     sender.backgroundColor = UIColor.white
                 }
                 
             }
         } else if sender == nextButton {
             // nextButton 실행코드
-            print("\(targetString)과 \(categoryClicked)")
-            let vc = HomeViewController()
+            let vc = SelectDateViewController()
+            vc.targetString = targetString
+            vc.categoryClicked = categoryClicked
             navigationController?.pushViewController(vc, animated: true)
         }
-        
         
         if isCategoryButtonClicked == true {
             nextButton.isEnabled = true
@@ -279,5 +285,6 @@ class TargetViewController: UIViewController {
             nextButton.isEnabled = false
             nextButton.backgroundColor = UIColor.gray
         }
+        
     }
 }

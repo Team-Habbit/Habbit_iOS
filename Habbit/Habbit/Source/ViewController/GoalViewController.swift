@@ -61,6 +61,7 @@ class GoalViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setUI()
+        setNavigationBarButton()
         targetTextField.delegate = self
         nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
     }
@@ -100,7 +101,12 @@ class GoalViewController: UIViewController {
             make.height.equalTo(60)
         }
     }
-
+    
+    func setNavigationBarButton() {
+        navigationItem.backButtonTitle = "목표 재설정"
+        navigationController?.navigationBar.tintColor = .darkGray
+    }
+    
     @objc func textFieldDidChange(_ textField: UITextField) {
         textfieldString = textField.text ?? ""
         print(textfieldString)
@@ -116,7 +122,7 @@ class GoalViewController: UIViewController {
 // MARK: - Keyboard
 extension GoalViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            targetTextField.resignFirstResponder()
-            return true
-        }
+        targetTextField.resignFirstResponder()
+        return true
+    }
 }

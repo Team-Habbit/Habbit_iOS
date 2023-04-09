@@ -59,8 +59,6 @@ final class CarrotCalendarViewController: UIViewController {
         return calendar
     }()
     
-    private var datesRange: [Date]?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
