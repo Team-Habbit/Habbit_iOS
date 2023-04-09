@@ -11,6 +11,10 @@
 		1E3D43A329E15C4300891D75 /* PaddingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D43A229E15C4300891D75 /* PaddingButton.swift */; };
 		1E3D43A529E15C5000891D75 /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D43A429E15C5000891D75 /* Padding.swift */; };
 		1E6C991B29E25E380079340E /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 1E6C991A29E25E380079340E /* FSCalendar */; };
+		1E6C991D29E2628F0079340E /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C991C29E2628F0079340E /* SelectDateViewController.swift */; };
+		1E6C991F29E2659C0079340E /* FixedSizePaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C991E29E2659C0079340E /* FixedSizePaddingLabel.swift */; };
+		1E6C992229E265BB0079340E /* Date+formattedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C992129E265BB0079340E /* Date+formattedString.swift */; };
+		1E6C992429E265D20079340E /* UIImage+resized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C992329E265D20079340E /* UIImage+resized.swift */; };
 		1E8F521029E044620001CA9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F520F29E044620001CA9E /* AppDelegate.swift */; };
 		1E8F521229E044620001CA9E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F521129E044620001CA9E /* SceneDelegate.swift */; };
 		1E8F521429E044620001CA9E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F521329E044620001CA9E /* MainViewController.swift */; };
@@ -60,6 +64,10 @@
 		1E3D43A029E15C3700891D75 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		1E3D43A229E15C4300891D75 /* PaddingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingButton.swift; sourceTree = "<group>"; };
 		1E3D43A429E15C5000891D75 /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
+		1E6C991C29E2628F0079340E /* SelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
+		1E6C991E29E2659C0079340E /* FixedSizePaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedSizePaddingLabel.swift; sourceTree = "<group>"; };
+		1E6C992129E265BB0079340E /* Date+formattedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+formattedString.swift"; sourceTree = "<group>"; };
+		1E6C992329E265D20079340E /* UIImage+resized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+resized.swift"; sourceTree = "<group>"; };
 		1E8F520C29E044620001CA9E /* Habbit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habbit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8F520F29E044620001CA9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E8F521129E044620001CA9E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,12 +126,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E6C992029E265B20079340E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1E6C992129E265BB0079340E /* Date+formattedString.swift */,
+				1E6C992329E265D20079340E /* UIImage+resized.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		1E714F6D29E1B80900A8818D /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				1E6C992029E265B20079340E /* Extension */,
 				1E3D43A429E15C5000891D75 /* Padding.swift */,
 				1E3D43A229E15C4300891D75 /* PaddingButton.swift */,
 				1E3D43A029E15C3700891D75 /* PaddingLabel.swift */,
+				1E6C991E29E2659C0079340E /* FixedSizePaddingLabel.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -191,6 +210,7 @@
 				47D8642929E1884100B3DD28 /* GoalViewController.swift */,
 				47D8642429E155F000B3DD28 /* TargetViewController.swift */,
 				47D8644929E1CF7700B3DD28 /* HomeViewController.swift */,
+				1E6C991C29E2628F0079340E /* SelectDateViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -409,17 +429,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E6C991D29E2628F0079340E /* SelectDateViewController.swift in Sources */,
 				1E3D43A329E15C4300891D75 /* PaddingButton.swift in Sources */,
+				1E6C992429E265D20079340E /* UIImage+resized.swift in Sources */,
 				1E3D43A529E15C5000891D75 /* Padding.swift in Sources */,
 				1E8F521429E044620001CA9E /* MainViewController.swift in Sources */,
 				1E3D43A129E15C3700891D75 /* PaddingLabel.swift in Sources */,
 				1E8F521029E044620001CA9E /* AppDelegate.swift in Sources */,
 				47D8642C29E193F600B3DD28 /* HelloViewController.swift in Sources */,
+				1E6C992229E265BB0079340E /* Date+formattedString.swift in Sources */,
 				1E8F521229E044620001CA9E /* SceneDelegate.swift in Sources */,
 				47D8644329E1998F00B3DD28 /* UIFont.swift in Sources */,
 				47D8642A29E1884100B3DD28 /* GoalViewController.swift in Sources */,
 				47D8642529E155F000B3DD28 /* TargetViewController.swift in Sources */,
 				47D8642829E164C700B3DD28 /* UIColor.swift in Sources */,
+				1E6C991F29E2659C0079340E /* FixedSizePaddingLabel.swift in Sources */,
 				47D8644A29E1CF7700B3DD28 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
