@@ -121,7 +121,7 @@ final class SelectDateViewController: UIViewController {
                   let categoryClicked = self?.categoryClicked,
                   let selectedDates = self?.selectedDates else { return }
             let userGoal = Goal(name: targetString, category: categoryClicked, aimedPeriod: selectedDates)
-            let nextViewController = HomeViewController()
+            let nextViewController = HomeViewController(goal: userGoal)
             self?.navigationController?.pushViewController(nextViewController, animated: true)
         }), for: .touchUpInside)
         return button

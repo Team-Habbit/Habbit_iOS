@@ -9,6 +9,7 @@ import UIKit
 
 extension UIColor {
     static let habbitYellow = UIColor.rgb(red: 249, green: 196, blue: 105)
+    static let habbitLightYellow = UIColor.rgb(red: 255, green: 200 , blue: 105)
     static let habbitBlack = UIColor.rgb(red: 56, green: 56, blue: 56)
     
 }

@@ -27,56 +27,70 @@ class HomeViewController: UIViewController {
         return $0
     }(UILabel())
     
-    var goalLabel: PaddingLabel = {
-        $0.text = "하루에 물 한잔씩 마시기"
-        $0.font = UIFont.pretendardRegular(size: 17)
-        $0.drawText(in: CGRect(x: 24, y: 24, width: 24, height: 24))
-        $0.textColor = UIColor.black
-        $0.backgroundColor = UIColor.habbitYellow
-        $0.layer.cornerRadius = 13
-        $0.layer.masksToBounds = true
-        $0.textAlignment = .center
-        return $0
-    }(PaddingLabel())
+    var goalLabel: FixedSizePaddingLabel = {
+        let label = FixedSizePaddingLabel(padding: .custom(top: 12, left: 20, bottom: 12, right: 20))
+        label.text = "하루에 물 한잔씩 마시기"
+        label.font = UIFont.pretendardRegular(size: 19)
+        label.textColor = UIColor.black
+        label.backgroundColor = UIColor.habbitLightYellow
+        label.layer.cornerRadius = 13
+        label.layer.masksToBounds = true
+        label.textAlignment = .center
+        return label
+    }()
     
-    let firstMessageLabel: PaddingLabel = {
-        $0.text = "오늘 하루도 힘내!"
-        $0.font = UIFont.pretendardRegular(size: 17)
-        $0.drawText(in: CGRect(x: 24, y: 24, width: 24, height: 24))
-        $0.textColor = UIColor.white
-        $0.backgroundColor = UIColor.habbitBlack
-        $0.layer.cornerRadius = 13
-        $0.layer.masksToBounds = true
-        $0.textAlignment = .center
-        return $0
-    }(PaddingLabel())
+    let firstMessageLabel: FixedSizePaddingLabel = {
+        let label = FixedSizePaddingLabel(padding: .custom(top: 10, left: 18, bottom: 10, right: 18))
+        label.text = "오늘 하루도 힘내!"
+        label.font = UIFont.pretendardRegular(size: 17)
+        label.textColor = UIColor.white
+        label.backgroundColor = UIColor.habbitBlack
+        label.layer.cornerRadius = 20
+        label.layer.masksToBounds = true
+        label.textAlignment = .center
+        return label
+    }()
     
-    let secondMessageLabel: PaddingLabel = {
-        $0.text = "밥은 먹고 하자~"
-        $0.font = UIFont.pretendardRegular(size: 17)
-        $0.drawText(in: CGRect(x: 24, y: 24, width: 24, height: 24))
-        $0.textColor = UIColor.white
-        $0.backgroundColor = UIColor.habbitBlack
-        $0.layer.cornerRadius = 13
-        $0.layer.masksToBounds = true
-        $0.textAlignment = .center
-        return $0
-    }(PaddingLabel())
+    let deliciousMessageLabel: FixedSizePaddingLabel = {
+        let label = FixedSizePaddingLabel(padding: .custom(top: 10, left: 18, bottom: 10, right: 18))
+        label.text = "너무 맛있어!"
+        label.font = UIFont.pretendardRegular(size: 17)
+        label.textColor = UIColor.white
+        label.backgroundColor = UIColor.habbitBlack
+        label.layer.cornerRadius = 20
+        label.layer.masksToBounds = true
+        label.textAlignment = .center
+        label.isHidden = true
+        return label
+    }()
     
-    let thanksLabel: PaddingLabel = {
-        $0.text = "챙겨줘서 고마워"
-        $0.font = UIFont.pretendardRegular(size: 17)
-        $0.drawText(in: CGRect(x: 24, y: 24, width: 24, height: 24))
-        $0.textColor = UIColor.white
-        $0.backgroundColor = UIColor.habbitBlack
-        $0.layer.cornerRadius = 13
-        $0.layer.masksToBounds = true
-        $0.textAlignment = .center
-        $0.isHidden = true
-        return $0
-    }(PaddingLabel())
+    let secondMessageLabel: FixedSizePaddingLabel = {
+        let label = FixedSizePaddingLabel(padding: .custom(top: 10, left: 18, bottom: 10, right: 18))
+        label.text = "밥은 먹고 하자~"
+        label.font = UIFont.pretendardRegular(size: 17)
+        label.textColor = UIColor.white
+        label.backgroundColor = UIColor.habbitBlack
+        label.layer.cornerRadius = 20
+        label.layer.masksToBounds = true
+        label.textAlignment = .center
+        return label
+    }()
+    
+    let thanksLabel: FixedSizePaddingLabel = {
+        let label = FixedSizePaddingLabel(padding: .custom(top: 10, left: 18, bottom: 10, right: 18))
+        label.text = "챙겨줘서 고마워"
+        label.font = UIFont.pretendardRegular(size: 17)
+        label.textColor = UIColor.white
+        label.backgroundColor = UIColor.habbitBlack
+        label.layer.cornerRadius = 20
+        label.layer.masksToBounds = true
+        label.textAlignment = .center
+        label.isHidden = true
+        return label
+    }()
     
     var habbitImageView: UIImageView = {
+//        $0.image = UIImage(named: "habbit_full")
         $0.image = UIImage(named: "habbit")
         return $0
     }(UIImageView())
@@ -120,6 +134,19 @@ class HomeViewController: UIViewController {
         return $0
     }(UILabel())
     
+    private var goal: Goal
+    
+    init(goal: Goal) {
+        self.goal = goal
+        super.init(nibName: nil, bundle: nil)
+        print("\(goal)")
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
 //MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,6 +166,7 @@ class HomeViewController: UIViewController {
         backgroundSrcollView.addSubview(titleLabel)
         backgroundSrcollView.addSubview(goalLabel)
         backgroundSrcollView.addSubview(firstMessageLabel)
+        backgroundSrcollView.addSubview(deliciousMessageLabel)
         backgroundSrcollView.addSubview(secondMessageLabel)
         backgroundSrcollView.addSubview(thanksLabel)
         backgroundSrcollView.addSubview(habbitImageView)
@@ -165,15 +193,18 @@ class HomeViewController: UIViewController {
         habbitImageView.snp.makeConstraints { make in
             make.top.equalTo(goalLabel.snp.bottom).inset(-40)
             make.centerX.equalToSuperview()
-            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(30)
-            make.height.equalTo(350)
+            make.width.height.equalTo(385)
         }
         firstMessageLabel.snp.makeConstraints { make in
-            make.top.equalTo(goalLabel.snp.bottom).inset(-50)
+            make.top.equalTo(goalLabel.snp.bottom).inset(-60)
             make.leading.equalToSuperview().inset(24)
         }
+        deliciousMessageLabel.snp.makeConstraints { make in
+            make.top.equalTo(goalLabel.snp.bottom).inset(-25)
+            make.leading.equalToSuperview().inset(33)
+        }
         secondMessageLabel.snp.makeConstraints { make in
-            make.top.equalTo(firstMessageLabel.snp.bottom).inset(-21)
+            make.top.equalTo(firstMessageLabel.snp.bottom).inset(-41)
             make.leading.equalToSuperview().inset(41)
         }
         thanksLabel.snp.makeConstraints { make in
@@ -213,9 +244,10 @@ class HomeViewController: UIViewController {
     
 //MARK: - function
     @objc func carrotButtonDidTap() {
+        deliciousMessageLabel.isHidden = false
         thanksLabel.isHidden = false
+        firstMessageLabel.isHidden = true
         secondMessageLabel.isHidden = true
-        firstMessageLabel.text = "너무 맛있어!"
         carrotButton.isHidden = true
         eatCarrotLabel.text = "주기 완료"
         habbitImageView.image = UIImage(named: "habbit_full")
