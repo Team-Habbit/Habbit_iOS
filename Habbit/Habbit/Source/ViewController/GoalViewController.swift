@@ -65,6 +65,8 @@ class GoalViewController: UIViewController {
         return $0
     }(UIButton())
     
+    var userName = ""
+    
 //MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
