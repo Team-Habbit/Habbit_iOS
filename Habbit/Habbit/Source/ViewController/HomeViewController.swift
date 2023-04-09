@@ -29,7 +29,6 @@ class HomeViewController: UIViewController {
     
     var goalLabel: FixedSizePaddingLabel = {
         let label = FixedSizePaddingLabel(padding: .custom(top: 12, left: 20, bottom: 12, right: 20))
-        label.text = "하루에 물 한잔씩 마시기"
         label.font = UIFont.pretendardRegular(size: 19)
         label.textColor = UIColor.black
         label.backgroundColor = UIColor.habbitLightYellow
@@ -147,15 +146,21 @@ class HomeViewController: UIViewController {
     }(UIButton())
     
     private var goal: Goal
+    private var timer: Timer?
     
     init(goal: Goal) {
         self.goal = goal
+        goalLabel.text = goal.name
         super.init(nibName: nil, bundle: nil)
     }
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        timer?.invalidate()
     }
     
 //MARK: - Life Cycles
@@ -166,6 +171,7 @@ class HomeViewController: UIViewController {
         setUpBarButton()
         backgroundSrcollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + (view.frame.height / 2))
         carrotButton.addTarget(self, action: #selector(carrotButtonDidTap), for: .touchUpInside)
+        scheduleDailyViewUpdate()
     }
     
 //MARK: - set UI
@@ -273,14 +279,41 @@ class HomeViewController: UIViewController {
         firstMessageLabel.isHidden = true
         secondMessageLabel.isHidden = true
         carrotButton.isSelected = true
-        
         eatCarrotLabel.text = "주기 완료"
         habbitImageView.image = UIImage(named: "habbitFull")
+        
+        goal.complete(today: Date())
     }
     
     @objc func calendarButtonDidTap() {
         let carrotCalendarVC = CarrotCalendarViewController(goal: goal)
         navigationController?.pushViewController(carrotCalendarVC, animated: true)
         navigationItem.backButtonTitle = ""
+    }
+    
+    private func scheduleDailyViewUpdate() {
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone(identifier: "Asia/Seoul")!
+        
+        let now = Date()
+        let tomorrow = calendar.date(byAdding: .day, value: 1, to: now)!
+        let tomorrowMidnight = calendar.startOfDay(for: tomorrow)
+        
+        let interval = tomorrowMidnight.timeIntervalSince(now)
+        
+        timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: false) { [weak self] _ in
+            self?.updateViewForNewDay()
+            self?.scheduleDailyViewUpdate()
+        }
+    }
+    
+    private func updateViewForNewDay() {
+        deliciousMessageLabel.isHidden = true
+        thanksLabel.isHidden = true
+        firstMessageLabel.isHidden = false
+        secondMessageLabel.isHidden = false
+        carrotButton.isSelected = false
+        eatCarrotLabel.text = "당근 주기"
+        habbitImageView.image = UIImage(named: "habbit")
     }
 }

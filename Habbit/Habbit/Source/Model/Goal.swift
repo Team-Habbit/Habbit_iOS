@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Goal {
+final class Goal {
     let name: String
     let category: GoalCategory
     let aimedPeriod: [DailyTask]
@@ -20,12 +20,26 @@ struct Goal {
         aimedPeriod.last?.date ?? Date()
     }
     
-    func toDTO() -> GoalDTO {
-        return GoalDTO(
-            goalName: name,
-            categoryName: category.index,
-            startDate: startDate.formattedString,
-            endDate: endDate.formattedString
-        )
+    init(name: String, category: GoalCategory, aimedPeriod: [DailyTask]) {
+        self.name = name
+        self.category = category
+        self.aimedPeriod = aimedPeriod
     }
+    
+    func complete(today: Date) {
+        let targetDate = aimedPeriod.first {
+            $0.date.formattedString == today.formattedString
+        }
+        
+        targetDate?.isCompleted = true
+    }
+    
+//    func toDTO() -> GoalDTO {
+//        return GoalDTO(
+//            goalName: name,
+//            categoryName: category.index,
+//            startDate: startDate.formattedString,
+//            endDate: endDate.formattedString
+//        )
+//    }
 }

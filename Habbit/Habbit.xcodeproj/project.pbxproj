@@ -136,6 +136,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E0DBF5C29E2C14200F88549 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		1E6C992029E265B20079340E /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +236,7 @@
 		1E8F524129E046F80001CA9E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1E0DBF5C29E2C14200F88549 /* Network */,
 				1E0DBF5429E2921A00F88549 /* GoalCategory.swift */,
 				1E0DBF5629E2923F00F88549 /* Goal.swift */,
 				1E0DBF5A29E2AA7400F88549 /* DailyTask.swift */,

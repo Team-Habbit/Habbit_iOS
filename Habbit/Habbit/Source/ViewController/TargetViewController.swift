@@ -195,7 +195,7 @@ class TargetViewController: UIViewController {
     }
     
     func setNavigationBarButton() {
-        navigationItem.backButtonTitle = "목표 재설정"
+        navigationItem.backButtonTitle = "카테고리 재설정"
         navigationController?.navigationBar.tintColor = .darkGray
     }
     
