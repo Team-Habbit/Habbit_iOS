@@ -167,16 +167,12 @@ extension CarrotCalendarViewController: FSCalendarDelegateAppearance {
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
         let userPeriodDates = userTasks.map { $0.date }
+        
         if !userPeriodDates.contains(date) {
             return .secondaryLabel
+        } else {
+            return .label
         }
-        
-        let targetTask = userTasks.first {
-            $0.date == date
-        }
-        
-        guard let targetTask = targetTask else { return nil }
-        return targetTask.isCompleted ? .label : .secondaryLabel
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleSelectionColorFor date: Date) -> UIColor? {

@@ -262,7 +262,7 @@ class HomeViewController: UIViewController {
     
     @objc func calendarButtonDidTap() {
         let carrotCalendarVC = CarrotCalendarViewController(goal: goal)
-//        navigationController?.pushViewController(carrotCalendarVC, animated: true)
-        present(carrotCalendarVC, animated: true)
+        navigationController?.pushViewController(carrotCalendarVC, animated: true)
+        navigationItem.backButtonTitle = ""
     }
 }

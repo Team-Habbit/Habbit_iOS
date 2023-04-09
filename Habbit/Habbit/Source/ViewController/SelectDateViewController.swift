@@ -127,7 +127,7 @@ final class SelectDateViewController: UIViewController {
             let aimedPriod = selectedDates.compactMap { DailyTask(date: $0, isCompleted: false) }
             let userGoal = Goal(name: targetString, category: categoryClicked, aimedPeriod: aimedPriod)
             let nextViewController = HomeViewController(goal: userGoal)
-            self?.navigationController?.pushViewController(nextViewController, animated: true)
+            self?.navigationController?.setViewControllers([nextViewController], animated: true)
         }), for: .touchUpInside)
         return button
     }()
