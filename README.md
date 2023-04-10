@@ -1,4 +1,17 @@
-# Habbit_iOS
+# 이뤄볼래? 당근
+
+- 스프린트 해커톤 (2023.04.07 ~ 2023.04.09) 출시작
+
+**딱딱하게 표현된 지표와 그래프, 체크리스트를 사용하던 기존에 성장 일지 앱에서 벗어나,  
+나의 목표에 맞춤화된 캐릭터 '해빗'를 활용해 보다 편안하고 즐거운 요소로 성장 과정을 기록할 수 있도록 도와주는 앱**
+
+<img width="1735" alt="CleanShot 2023-04-10 at 11 05 15@2x" src="https://user-images.githubusercontent.com/57667738/230811036-d74ed9d9-fa10-46fe-9027-c724e4f886a4.png" width="90%">
+<img width="1736" alt="CleanShot 2023-04-10 at 11 04 05@2x" src="https://user-images.githubusercontent.com/57667738/230810966-b5ddd17c-d9fa-47ba-9b2a-3fc5456b298c.png" width="90%">
+<img width="1728" alt="CleanShot 2023-04-10 at 11 10 11@2x" src="https://user-images.githubusercontent.com/57667738/230811447-448b3a65-ed22-4246-a371-23aa2b94ea77.png" width="90%">
+
+
+
+<br>
 
 ### 사용자 설정 페이지
 
@@ -53,3 +66,4 @@
 전체 실행 흐름 화면 입니다.  
 
 <img src="https://user-images.githubusercontent.com/57667738/230778251-4bad9269-efdf-4da6-88f7-ed3b886a5795.gif" width="35%"/>
+
